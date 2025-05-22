@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Đăng nhập / Đăng ký</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="form-wrapper">
+    <div class="form-toggle">
+      <button id="showLogin">Đăng nhập</button>
+      <button id="showRegister">Đăng ký</button>
+    </div>
+
+    <!-- Form Đăng Nhập -->
+    <form id="loginForm" class="form active">
+      <h2>Đăng nhập</h2>
+      <div class="input-group">
+        <input type="text" id="loginUsername" required />
+        <label for="loginUsername">Tên đăng nhập</label>
+      </div>
+      <div class="input-group">
+        <input type="password" id="loginPassword" required />
+        <label for="loginPassword">Mật khẩu</label>
+      </div>
+      <button type="submit" class="btn">Đăng nhập</button>
+      <p id="loginMessage" class="message"></p>
+    </form>
+
+    <!-- Form Đăng Ký -->
+    <form id="registerForm" class="form">
+      <h2>Đăng ký</h2>
+      <div class="input-group">
+        <input type="text" id="regUsername" required />
+        <label for="regUsername">Tên đăng nhập</label>
+      </div>
+      <div class="input-group">
+        <input type="password" id="regPassword" required />
+        <label for="regPassword">Mật khẩu</label>
+      </div>
+      <div class="input-group">
+        <input type="password" id="regConfirm" required />
+        <label for="regConfirm">Xác nhận mật khẩu</label>
+      </div>
+      <button type="submit" class="btn">Đăng ký</button>
+      <p id="registerMessage" class="message"></p>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
