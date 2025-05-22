@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Hot TIKTOK</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0a0a0a;
+      color: white;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1 {
+      color: #ffa500;
+    }
+
+    #player {
+      margin-top: 20px;
+      width: 100%;
+      height: 450px;
+      background-color: black;
+    }
+
+    .notice {
+      background-color: #222;
+      padding: 15px;
+      border-radius: 6px;
+      margin-top: 20px;
+      color: #f88;
+      font-weight: bold;
+    }
+
+    .xu-box {
+      margin-top: 10px;
+      color: #ccc;
+    }
+
+    button {
+      padding: 8px 16px;
+      background-color: #1e90ff;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #0077cc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="title">Đang tải Video...</h1>
+    <div class="xu-box">Số giờ còn lại: <span id="xu">0</span></div>
+
+    <div id="player"></div>
+
+    <div class="notice" id="notice" style="display:none;">
+      Bạn cần thêm<strong>giờ</strong> để xem video. Vui lòng liên hệ telegram @mun2k11 để gặp Admin cấp quyền Vip nhé !!! 
+      <br>
+    </div>
+  </div>
+
+  <script>
+    const videos = {
+      "real-men": {
+        title: "Idol Mun",
+        url: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      },
+      "prisoner": {
+        title: "Trần Hà Linh",
+        url: "https://www.youtube.com/embed/9bZkp7q19f0"
+      },
+      "flower-destiny": {
+        title: "La Hoàng Kỳ Duyên",
+        url: "https://www.youtube.com/embed/tgbNymZ7vqY"
+      }
+    };
+
+    const xuDisplay = document.getElementById("xu");
+    const notice = document.getElementById("notice");
+    const player = document.getElementById("player");
+
+    function getXu() {
+      return parseInt(localStorage.getItem("xu") || "0");
+    }
+
+    function setXu(value) {
+      localStorage.setItem("xu", value);
+      xuDisplay.textContent = value;
+    }
+
+    function napXu() {
+      let xu = getXu();
+      xu += 10;
+      setXu(xu);
+      alert("Nạp 10 xu thành công!");
+      location.reload();
+    }
+
+    function playVideo(videoId) {
+      const xu = getXu();
+      const video = videos[videoId];
+
+      if (!video) {
+        document.getElementById("title").textContent = "Không tìm thấy phim!";
+        return;
+      }
+
+      document.getElementById("title").textContent = video.title;
+
+      if (xu < 10) {
+        notice.style.display = "block";
+        return;
+      }
+
+      // Trừ xu và phát video
+      setXu(xu - 10);
+      player.innerHTML = `<iframe width="100%" height="100%" src="${video.url}" frameborder="0" allowfullscreen></iframe>`;
+    }
+
+    function init() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get("id");
+      xuDisplay.textContent = getXu();
+      playVideo(id);
+    }
+
+    init();
+  </script>
+</body>
+</html>

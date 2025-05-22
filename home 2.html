@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Hot TIK TOK</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0b0f18;
+      color: white;
+    }
+
+    .header {
+      background-color: #111;
+      padding: 15px;
+      text-align: center;
+      font-size: 22px;
+      color: #00bfff;
+    }
+
+    .xu {
+      text-align: center;
+      margin-top: 10px;
+      color: #ddd;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      padding: 15px;
+    }
+
+    .card {
+      background-color: #1a1a1a;
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .thumb {
+      height: 160px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .info {
+      padding: 10px;
+    }
+
+    .badge {
+      background-color: #a0522d;
+      padding: 3px 6px;
+      border-radius: 3px;
+      font-size: 11px;
+      margin-bottom: 4px;
+      display: inline-block;
+    }
+
+    .title {
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    .subtitle {
+      font-size: 11px;
+      color: #ccc;
+    }
+
+    /* === Khung thông báo === */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: linear-gradient(135deg, #0f2233, #003366);
+      padding: 25px;
+      border-radius: 10px;
+      text-align: center;
+      max-width: 90%;
+      color: #ffffff;
+      box-shadow: 0 0 15px rgba(0, 187, 255, 0.4);
+    }
+
+    .modal h2 {
+      color: #00bfff;
+      margin-bottom: 10px;
+    }
+
+    .modal p {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .modal button {
+      margin-top: 15px;
+      padding: 8px 20px;
+      background-color: #00bfff;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .modal button:hover {
+      background-color: #0099cc;
+    }
+
+    @media (min-width: 768px) {
+      .grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .thumb {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Khung thông báo -->
+  <div class="modal" id="thongbao">
+    <div class="modal-content">
+      <h2>Xin chào!</h2>
+      <p>Chào mừng bạn đến với web Hot TIKTOK. Đây là trang web xem các video và drama hot trên Tik Tok ví dụ như ( idol mun2k11 lộ clip, nhảy lầu,...) và bạn hãy có danh hiệu cấp quyền Vip từ Admin để xem video mượn mà, tải video độ sắt nét 1080p đến 4k nhé !!! 
+      TELEGRAM @mun2k11 </p>
+      <button onclick="closeModal()"> Đóng</button>
+    </div>
+  </div>
+
+  <div class="header">VIDEO MỚI CẬP NHẬT VÀ ĐẦY ĐỦ NHẤT </div>
+  <div class="xu">Số giờ xem: <span id="xu"> Thường </span></div>
+
+  <div class="grid">
+    <div class="card" onclick="goToMovie('real-men')">
+      <div class="thumb" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNMU57mqG8MtoHtzAMhMjzZ-tJ5lvn7VNIUw&s');"></div>
+      <div class="info">
+        <div class="badge">8/8 </div>
+        <div class="title">Idol Mun</div>
+        <div class="subtitle">Hot TIKTOK</div>
+      </div>
+    </div>
+
+    <div class="card" onclick="goToMovie('prisoner')">
+      <div class="thumb" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-nXK3vbQUnEmUE_rg9aJygipqQHVqwHsY6w&s');"></div>
+      <div class="info">
+        <div class="badge">15/15</div>
+        <div class="title">Trần Hà Linh</div>
+        <div class="subtitle">Hot TIKTOK</div>
+      </div>
+    </div>
+
+    <div class="card" onclick="goToMovie('flower-destiny')">
+      <div class="thumb" style="background-image: url('https://images.kienthuc.net.vn/zoomh/800/uploaded/phuongdh/2025_01_08/3/dan-hot-girl-tiep-tuc-khuay-dong-trend-vay-bang-keo-cuc-nong-bong-Hinh-3.jpg');"></div>
+      <div class="info">
+        <div class="badge">4/4</div>
+        <div class="title">La Hoàng Kỳ Duyên</div>
+        <div class="subtitle">Hot TIKTOK</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function getXu() {
+      return parseInt(localStorage.getItem("xu") || "0");
+    }
+
+    function goToMovie(id) {
+      window.location.href = `xem.html?id=${id}`;
+    }
+
+    function closeModal() {
+      document.getElementById("thongbao").style.display = "none";
+    }
+
+    // Gán xu vào hiển thị
+    document.getElementById("xu").textContent = getXu();
+  </script>
+</body>
+</html>

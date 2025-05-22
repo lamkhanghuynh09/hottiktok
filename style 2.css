@@ -1,0 +1,103 @@
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-wrapper {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  width: 350px;
+}
+
+.form-toggle {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-toggle button {
+  padding: 8px 20px;
+  margin: 0 5px;
+  border: none;
+  background: #eee;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.form-toggle button:hover {
+  background: #ddd;
+}
+
+.form {
+  display: none;
+}
+
+.form.active {
+  display: block;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+}
+
+.input-group label {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  color: #aaa;
+  pointer-events: none;
+  transition: 0.2s;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 10px;
+  font-size: 12px;
+  background: #fff;
+  padding: 0 5px;
+  color: #2575fc;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  background: #2575fc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #1a5cd8;
+}
+
+.message {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+}
