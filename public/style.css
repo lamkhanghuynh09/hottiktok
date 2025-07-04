@@ -1,0 +1,153 @@
+/* Reset & Font */
+.game-title {
+  font-size: 2rem;
+  margin: 40px auto 20px;
+  color: #ffcc00;
+  text-align: center;
+}
+
+.game-card {
+  background-color: #222;
+  border-radius: 20px;
+  padding: 20px;
+  width: 350px;
+  margin: 0 auto 60px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.game-name {
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(to right, #1f1c2c, #928dab);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.nav a, .user-info {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: background 0.3s;
+}
+
+.nav a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Form Container */
+form {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 15px;
+  width: 320px;
+  margin: 0 auto;
+  box-shadow: 0 0 10px #000;
+}
+
+input, button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 15px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+}
+
+input {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+input::placeholder {
+  color: #ccc;
+}
+
+/* Glowing Button */
+button {
+  background: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  border: 2px solid white;
+  transition: 0.3s;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #f06, #9f6, #0ff, #f06);
+  z-index: -1;
+  background-size: 400%;
+  filter: blur(5px);
+  animation: glow 10s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes glow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Main */
+main {
+  text-align: center;
+}
+
+h1, h2 {
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #000;
+}
+
+/* Error */
+.error {
+  color: #ff4f4f;
+  font-weight: bold;
+  text-align: center;
+}
+.game-title {
+  font-size: 2rem;
+  margin: 40px auto 20px;
+  color: #ffcc00;
+  text-align: center;
+} 
